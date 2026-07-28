@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        button {
+            height:80px;
+            width: 80px;
+            border-radius: 15px;
+            background-color: rgb(94, 93, 93);
+            color: white;
+            font-size: xx-large;
+            border: black 3px solid;
+            font-weight: bold;
+        }
+        #mytxt {
+            width: 366px;
+            height: 100px;
+            margin-bottom: 10px;
+            font-size: 1cm;
+            font-weight: bold;
+            border-radius: 10px;
+            text-align: right;
+            border: black 4px solid;
+        }
+        table {
+            margin-top: 100px;
+        }
+        #d {
+            background-color: rgb(193, 86, 86);
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. WAP to create a basic graphical Calculator using HTML and JavaScript. (A) -->
+    
+    <table height="500px" width="400px" align="center">
+        <tr>
+            <td colspan="4"><input type="text" id="mytxt"></td>
+        </tr>
+        <tr>
+            <td><button onclick="clearall()" id="d">AC</button></td>
+            <td><button onclick="dlt()" id="d">⇐</button></td>
+            <td><button onclick="display('%')" id="d">%</button></td>
+            <td><button onclick="display('/')" id="d">/</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="display('7')">7</button></td>
+            <td><button onclick="display('8')">8</button></td>
+            <td><button onclick="display('9')">9</button></td>
+            <td><button onclick="display('*')" id="d">*</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="display('4')">4</button></td>
+            <td><button onclick="display('5')">5</button></td>
+            <td><button onclick="display('6')">6</button></td>
+            <td><button onclick="display('-')" id="d">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="display('1')">1</button></td>
+            <td><button onclick="display('2')">2</button></td>
+            <td><button onclick="display('3')">3</button></td>
+            <td><button onclick="display('+')" id="d">+</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="display('0')">0</button></td>
+            <td><button onclick="display('00')">00</button></td>
+            <td><button onclick="display('.')">.</button></td>
+            <td><button onclick="result()" id="d">=</button></td>
+        </tr>
+    </table>
+
+    <script>
+        function display(num){
+            document.getElementById("mytxt").value += num
+        }
+        function clearall(){
+            document.getElementById("mytxt").value=" ";
+        }
+        function dlt(){
+            exp=document.getElementById("mytxt").value;
+            ans=exp.slice(0,-1);
+            document.getElementById("mytxt").value=ans;
+        }
+        function result(){
+            exp=document.getElementById("mytxt").value;
+            res=eval(exp);
+            document.getElementById("mytxt").value=res;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B5</title>
+</head>
+<body>
+    <script>
+        // 5. Calculate a person's Age from their Date of Birth. (B)
+        
+        let today = new Date()
+        let bd = prompt("Enter Your Birthdate(yyyy-mm-dd) :")
+
+        let dob = new Date(bd)
+        
+        age = today.getFullYear() - dob.getFullYear()
+
+        if((today.getMonth() < dob.getMonth()) || ((today.getMonth() == dob.getMonth()) && today.getDay() < dob.getDay() )){
+            age--
+        }
+
+        document.write("Your Age : "+age)
+    </script>
+</body>
+</html>

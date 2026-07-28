@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A2</title>
+  </head>
+  <body>
+    <script>
+      // 2. Demonstrate different array functions like push, pop, shift, unshift, splice, sort etc… (A)
+
+      let arr = [1, 2, 3, 4, 5];
+
+      document.write("<h2>" + "Original Array" + "</h2><br>");
+      document.write(arr + "<br><br>");
+
+      document.write("<h2>" + "Methods" + "</h2><br>");
+
+      arr.push(6);
+      document.write("<b>Push : </b>" + arr + "<br><br>");
+      arr.pop();
+      document.write("<b>Pop : </b>" + arr + "<br><br>");
+      arr.shift();
+      document.write("<b>Shift : </b>" + arr + "<br><br>");
+      arr.unshift(0);
+      document.write("<b>Unshift : </b>" + arr + "<br><br>");
+      arr.splice(1, 3, "one", "two", "three");
+      document.write("<b>Splice : </b>" + arr + "<br><br>");
+      arr.sort();
+      document.write("<b>Sort : </b>" + arr + "<br><br>");
+    </script>
+  </body>
+</html>

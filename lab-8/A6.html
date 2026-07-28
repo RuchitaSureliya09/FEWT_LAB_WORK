@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A6</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+      <!-- 6. WAP to prepare student registration form and validate it using JavaScript. (A) -->
+
+    <div class="container mx-auto col-6 mb-5">
+        <form id="myForm" action="" method="post" >
+            <div class="h1 d-flex justify-content-center my-5">Student Registration</div>
+
+            <label for="username">Name</label>
+            <input class="form-control" type="text" placeholder="Enter User Name" id="username" required>
+            <span class="error" id="nameerror">Invalide Name ! It should be 3-20 characters long and contain only letters.</span> 
+            <br><br><br>
+
+            <label for="email">Email</label>
+            <input class="form-control" type="text" placeholder="Enter Email id" id="email" required>
+            <span class="error" id="emailerror">Invalid email format !</span>
+            <br><br><br>
+
+            <label for="enroll">Enrollment No.</label>
+            <input class="form-control" type="text" placeholder="Enter Enrollment No." id="enroll" required>
+            <span class="error" id="enrollerror">Enrollment number should be 11 digits</span>
+            <br><br><br>
+
+            <label for="pass">Password</label>
+            <input class="form-control" type="password" placeholder="Enter Password" id="pass" required>
+            <span class="error" id="passerror">Invalid Password ! It should be 6-16 characters long and can contain letters, numbers, and special characters.</span>
+            <br><br><br>
+
+            <label for="con-pass">Confirm Password</label>
+            <input class="form-control" type="password" placeholder="Enter Confirm Password" id="con-pass" required>
+            <span class="error" id="conpasserror">Passwords do not match !</span>
+            <br><br><br>
+
+            <input class="form-control w-25 ms-5 btn btn-primary" type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit",function validateForm(e) {
+            e.preventDefault();
+
+            var username = document.getElementById("username").value;
+            var email = document.getElementById("email").value;
+            var enroll = document.getElementById("enroll").value;
+            var pass = document.getElementById("pass").value;
+            var conPass = document.getElementById("con-pass").value;
+            
+            userpattern = /^[a-zA-Z]{3,20}$/
+            passpattern = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/
+            emailpattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+            enrollpattern = /^[0-9]{11}$/
+
+            var nameerror =  document.getElementById("nameerror").innerHTML = " "
+            var emailerror = document.getElementById("emailerror").innerHTML = " "
+            var enrollerror = document.getElementById("enrollerror").innerHTML = " "
+            var passerror =  document.getElementById("passerror").innerHTML = " "
+            var conpasserror = document.getElementById("conpasserror").innerHTML = " "
+
+            var valid = true;
+
+            if (!userpattern.test(username)) {
+                document.getElementById("nameerror").innerHTML = "Invalide Name ! It should be 3-20 characters long and contain only letters."
+                valid = false;
+            }
+
+            if (!emailpattern.test(email)) {
+                document.getElementById("emailerror").innerHTML = "Invalid email format !"
+                valid = false;
+            }
+
+            if (!enrollpattern.test(enroll)) {
+                document.getElementById("enrollerror").innerHTML = "Enrollment number should be 11 digits"
+                valid = false;
+            }
+
+            if (!passpattern.test(pass)) {
+                document.getElementById("passerror").innerHTML = "Invalid Password ! It should be 6-16 characters long and can contain letters, numbers, and special characters."
+                valid = false;
+            }
+
+            if (pass !== conPass) {
+                document.getElementById("conpasserror").innerHTML = "Passwords do not match !"
+                valid = false;
+            }
+
+            if(valid = true) {
+                alert("Form Successfully Submit")
+            }
+        });
+    </script>
+</body>
+</html>

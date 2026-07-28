@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A5</title>
+  </head>
+  <body>
+    <!-- 5. WAP to demonstrate change in properties of HTML element using JavaScript. (A) -->
+
+    <div id="pro">
+      A paragraph is a self-contained unit of writing that develops a single,
+      unified idea or point. It typically begins on a new line and consists of a
+      topic sentence supported by related details, followed by a concluding
+      sentence that summarizes the main thought. A paragraph is a self-contained
+      unit of writing that develops a single, unified idea or point. It
+      typically begins on a new line and consists of a topic sentence supported
+      by related details, followed by a concluding sentence that summarizes the
+      main thought. A paragraph is a self-contained unit of writing that
+      develops a single, unified idea or point. It typically begins on a new
+      line and consists of a topic sentence supported by related details,
+      followed by a concluding sentence that summarizes the main thought.
+    </div>
+
+    <br><br>
+    <button onclick="something()">Click</button>
+
+    <script>
+      var pro = document.getElementById("pro");
+      pro.addEventListener("click", function () {
+        pro.style.color = "blue";
+      });
+
+      function something() {
+        pro.style.backgroundColor = "lightgrey";
+      }
+    </script>
+  </body>
+</html>

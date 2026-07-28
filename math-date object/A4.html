@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4</title>
+</head>
+<body>
+    <script>
+        // 4. Display the Current Date, Time, Day, Month, and Year using the Date object. (A)
+        
+        let date = new Date();
+
+        let Days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+        let Months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+
+        document.write("Current Date : "+date.getDate()+"</br>")
+        document.write("Current Time : "+date.getTime()+"</br>")
+        document.write("Current Day : "+Days[date.getDay()]+"</br>")
+        document.write("Current Month : "+Months[date.getMonth()]+"</br>")
+        document.write("Current Year : "+date.getFullYear()+"</br>")
+    </script>
+</body>
+</html>

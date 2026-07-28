@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab-1f</title>
+</head>
+<body>
+    <script>
+      // 6. WAP in JavaScript to check whether the given number is Armstrong or not. (A)
+
+        let n = parseInt(prompt("Enter number : "))
+        let temp1=n,temp=n,count=0,rem=0,sum=0
+
+        // -->power nu default function use na karvu hoi to user define function build karvu
+        // function power(x,y){ 
+        //     let mul=1
+
+        //     for(let i=0;i<y;i++)
+        //         mul*=x
+
+        //     return mul
+        // }
+
+        while(temp1!=0){
+            temp1=parseInt(temp1/10)
+            count++
+        }
+
+        while(temp!=0){
+            rem=temp%10
+            sum+=Math.pow(rem,count)
+            temp = parseInt(temp/10)
+        }
+
+        if(sum==n)
+            alert("Armstrong number")
+        else
+            alert("Not Armstrong number")
+
+
+    </script>
+</body>
+</html>

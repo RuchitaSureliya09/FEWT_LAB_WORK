@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A3</title>
+  </head>
+  <body>
+    <script>
+      // 3. WAP to read an array from the user and sort them using bubble sort. (A)
+
+      let n = parseInt(prompt("Enter size of array : "));
+      let arr = [],
+        temp;
+
+      for (let index = 0; index < n; index++) {
+        arr[index] = parseInt(prompt("Enter element " + index));
+      }
+
+      for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j]>arr[j+1]) {
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+      }
+
+      document.write("Array : " + arr.join(", "));
+    </script>
+  </body>
+</html>

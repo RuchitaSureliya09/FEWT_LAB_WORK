@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A2</title>
+  </head>
+  <body>
+    <script>
+      // 2. WAP to read an array from the user and sort them in ascending order. (A)
+
+      let n = parseInt(prompt("Enter size of array : "));
+      let arr = [],temp;
+
+      for (let index = 0; index < n; index++) {
+        arr[index] = parseInt(prompt("Enter element " + index));
+      }
+
+      for (let i = 0; i < n-1; i++) {
+        for (let j = i+1; j < n; j++) {
+            if(arr[i] > arr[j]) {
+                temp = arr[i]
+                arr[i]=arr[j]
+                arr[j]=temp
+            }
+        }
+      }
+
+      document.write("Array : "+arr.join(" , "))
+    </script>
+  </body>
+</html>

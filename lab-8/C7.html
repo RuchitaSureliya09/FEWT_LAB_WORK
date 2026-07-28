@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C7</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- 7. WAP to perform CRUD operation on Array using HTML and JavaScript. (C) -->
+     
+    <div class="container-md mx-auto col-7 mb-5">
+      <div class="row my-5">
+        <div class="row h1 mb-4">STUDENT CRUD</div>
+        <table class="table">
+          <tr>
+            <td><label for="name" class="fs-5 ps-3">Student Name</label></td>
+            <td>
+              <input
+                class="form-control"
+                type="text"
+                placeholder=""
+                id="name"
+              />
+              <button class="btn btn-primary mt-3" id="add" onclick="addstudent()">Add Student</button>
+              <button class="btn btn-success mt-3" id="update" onclick="updatestudent()">
+                Update
+              </button>
+            </td>
+            <td></td>
+          </tr>
+        </table>
+
+        <table class="table table-bordered table-striped table-hover mt-5">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Student Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Student rows will be dynamically added here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+        let students = [];
+        let index = 1;
+
+        function display(){
+          let temp = '';
+
+          for (let i = 0; i < students.length; i++) {
+            temp += `
+            <tr>
+              <td>${i+1}</td>
+              <td>${students[i]}</td>
+              <td>
+                <button class="btn btn-primary" id="edit" onclick='editstudent(${i})'>Edit</button>
+                <button class="btn btn-danger" id="delete" onclick='deletestudent(${i})'>Delete</button>
+              </td>
+            </tr>
+            `
+          }
+
+          document.getElementById("tableBody").innerHTML = temp
+        }
+
+        function addstudent() {
+          name = document.getElementById("name").value;
+
+          if(name == "") {
+              alert("Please enter a name !");
+              return;
+          }
+          students.push(name)
+          document.getElementById("name").value = " "
+          display()
+        }
+        
+        function deletestudent(i) {
+          students.splice(i, 1)
+          display()
+        }
+
+        function editstudent(i) {
+          document.getElementById("name").value = students[i]
+          editIndex = i;
+        }
+
+        function updatestudent() {
+          if(editIndex == -1) {
+            alert("Please select a student to update !");
+            return;
+          }
+
+          name = document.getElementById("name").value
+          
+          if(name == "") {
+            alert("Please enter a name !");
+            return;
+          }
+
+          students[editIndex] = name
+          document.getElementById("name").value = " "
+          editIndex = -1
+          display()
+        }
+    </script>
+  </body>
+</html>

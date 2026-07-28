@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C10</title>
+</head>
+<body>
+    <script>
+        // 10. Generate a Random Password (alpha numberical) of user-defined length using the Math object. (C)
+        
+        let len = prompt("Enter password length :")
+        char = "QIO3ed94PLKJ5XCyujmkVWxDS1HGFAZ68cE7NMqazwsvf2rtgbnhio0lpRTYUB"
+        pass=''
+
+        for (let index = 0; index < len; index++) {
+            randomindex  = Math.floor(Math.random()*char.length)
+            pass+=char[randomindex]
+        }
+
+        document.write("Password : "+pass)
+    </script>
+</body>
+</html>

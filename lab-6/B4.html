@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A4</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- 4. WAP to display products stored in array. (B)
+         using literal template -> (`) -->
+    
+    <script>
+      faculty = [
+        {
+          name: "Dr. John Smith",
+          department: "Computer Science",
+          position: "Professor",
+          email: "john.smith@university.edu",
+          phone: "123-456-7890",
+        },
+        {
+          name: "Dr. Emily Johnson",
+          department: "Mathematics",
+          position: "Associate Professor",
+          email: "emily.johnson@university.edu",
+          phone: "234-567-8901",
+        },
+        {
+          name: "Dr. Michael Brown",
+          department: "Physics",
+          position: "Assistant Professor",
+          email: "michael.brown@university.edu",
+          phone: "345-678-9012",
+        },
+        {
+          name: "Dr. Sarah Davis",
+          department: "Chemistry",
+          position: "Lecturer",
+          email: "sarah.davis@university.edu",
+          phone: "456-789-0123",
+        },
+        {
+          name: "Dr. Robert Wilson",
+          department: "Biology",
+          position: "Professor",
+          email: "robert.wilson@university.edu",
+          phone: "567-890-1234",
+        },
+        {
+          name: "Dr. Laura Martinez",
+          department: "English",
+          position: "Assistant Professor",
+          email: "laura.martinez@university.edu",
+          phone: "678-901-2345",
+        },
+        {
+          name: "Dr. James Taylor",
+          department: "History",
+          position: "Professor",
+          email: "james.taylor@university.edu",
+          phone: "789-012-3456",
+        },
+        {
+          name: "Dr. Jennifer Anderson",
+          department: "Philosophy",
+          position: "Lecturer",
+          email: "jennifer.ander@university.edu",
+          phone: "890-123-4567",
+        },
+        {
+          name: "Dr. William Thomas",
+          department: "Economics",
+          position: "Associate Professor",
+          email: "william.thomas@university.edu",
+          phone: "901-234-5678",
+        },
+        {
+          name: "Dr. Mary Jackson",
+          department: "Sociology",
+          position: "Professor",
+          email: "mary.jackson@university.edu",
+          phone: "012-345-6789",
+        },
+      ];
+
+      document.write(
+        "<h2 class='row justify-content-center fw-bold my-4'>FACULTY MEMBERS</h2><br>",
+      );
+
+      document.write("<div class='container mb-5'>");
+      document.write("<div class='row g-4'>");
+
+      for (let i = 0; i < faculty.length; i++) {
+        // document.write("<div class='card  m-2' style='width: 19rem;'>");
+        // document.write("<div class='card-body'>");
+
+        // document.write("<h5 class='card-title'>"+faculty[i].name+"</h5>");
+        // document.write("<p class='card-text'>"+faculty[i].department+"</p>");
+        // document.write("<p class='card-text'>"+faculty[i].position+"</p>");
+        // document.write("<p class='card-text'>"+faculty[i].email+"</p>");
+        // document.write("<p class='card-text'>"+faculty[i].phone+"</p>");
+
+        // document.write("</div>");
+        // document.write("</div>");
+
+        document.write(`
+              <div class='col-md-3'>
+                <div class="card" style='width: 19rem;'>
+                  <h5 class="card-header text-center fw-bold">${faculty[i].name}</h5>
+                    <div class="card-body">
+                      <p class="card-text"><b>Department:</b> ${faculty[i].department}</p>
+                      <p class="card-text"><b>Position:</b> ${faculty[i].position}</p>
+                      <p class="card-text"><b>Email:</b> ${faculty[i].email}</p>
+                      <p class="card-text"><b>Phone:</b> ${faculty[i].phone}</p>
+                    </div>
+                </div>
+              </div>
+          `);
+      }
+
+      document.write("</div>");
+      document.write("</div>");
+    </script>
+  </body>
+</html>

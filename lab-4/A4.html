@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab-2d</title>
+</head>
+<body>
+    <script>
+        // 4. WAP in JavaScript to print the GCD of two number. (A)
+
+        let n1 = parseInt(prompt("Enter number 1 : "))
+        let n2 = parseInt(prompt("Enter number 2 : "))
+        let min = (n1>n2)?(n2):(n1)
+
+        for(let i=1;i<=min;i++){
+            if(n1%i==0 && n2%i==0){
+                    gcd=i
+            }
+        }
+
+        document.write("GCD : "+gcd)
+    </script>
+</body>
+</html>

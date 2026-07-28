@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A2</title>
+  </head>
+  <body>
+    <script>
+      // 2. Demonstrate the difference between let and var. (A)
+
+
+      //                |     var     |      let     |     const
+      // ---------------------------------------------------------------
+      // reassign       |      ✓      |      ✓      |      ⨉
+      // redeclare      |      ✓      |      ⨉      |      ⨉
+      // scop           |   function  |     block    |     block
+
+
+      var a = 10;
+      let b = 30;
+
+      function f1() {
+        document.write("function :<br>");
+        a = 20;
+        document.write(
+          "After assign new value of a inside function : " + a + "<br>",
+        );
+
+        var a = 16;
+        document.write(
+          "After deaclare new var a inside function : " + a + "<br><br>",
+        );
+      }
+
+      f1();
+
+      if (true) {
+        document.write("block :<br>");
+        document.write(
+          "After assign new value of a inside block : " + b + "<br>",
+        );
+
+        //b=40;
+        //document.write("After deaclare new var a inside block : "+b) --> error redeclare not allow
+      }
+    </script>
+  </body>
+</html>

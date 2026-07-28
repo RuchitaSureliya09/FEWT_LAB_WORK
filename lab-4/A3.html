@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab-2c</title>
+  </head>
+  <body>
+    <script>
+      // 3. WAP to display given patterns using JavaScript. (A)
+
+      let n = parseInt(prompt("Enter number of rows for 1: "));
+      let n1 = parseInt(prompt("Enter number of rows for 2: "));
+      let n2 = parseInt(prompt("Enter number of rows for 3: "));
+
+      document.write("Pattern 1 : <br/>");
+      for (let i = 0; i < n; i++) {
+        for (let j = 0; j <= i; j++) {
+          document.write("*");
+        }
+        document.write("<br/>");
+      }
+
+      document.write("<br/>Pattern 2 : <br/>");
+      let b = n1;
+
+      for (let i = 1; i <= n1; i++) {
+        for (let j = n1; j >= i; j--) {
+          document.write(b);
+          b--;
+        }
+        b = n1 - i;
+        document.write("<br/>");
+      }
+
+      document.write("<br/>Pattern 3 : <br/>");
+      let a = 1;
+
+      for (let i = 0; i < n2; i++) {
+        for (let j = 0; j <= i; j++) {
+          document.write(a);
+
+          if (a == 1) a = 0;
+          else a = 1;
+        }
+        document.write("<br/>");
+      }
+    </script>
+  </body>
+</html>

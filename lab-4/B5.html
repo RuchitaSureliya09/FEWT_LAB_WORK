@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab-2e</title>
+  </head>
+  <body>
+    <script>
+      // 5. Write a JavaScript to take 2-digit number and then separate these 2 digits, then multiply ƒrst digit
+      // by itself for second digit times. (B)
+      // (For example, 23 should be separated as 2 and 3. 2 should multiply with itself 3 times).
+
+      let n = parseInt(prompt("Enter 2 digit number : "));
+      let n1 = n % 10;
+      let n2 = parseInt(n / 10);
+      let mul = 1;
+
+      for (let i = 0; i < n1; i++) mul *= n2;
+
+      document.write("Answer : " + mul);
+    </script>
+  </body>
+</html>

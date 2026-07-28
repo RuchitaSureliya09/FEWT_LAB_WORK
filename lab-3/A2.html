@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab-1b</title>
+  </head>
+  <body>
+    <script>
+      // 2. WAP in JavaScript to check whether the given no. is prime or not. (A)
+
+      let n = parseInt(prompt("Enter number : "));
+      let flag = 0;
+
+      for (let i = 2; i < n; i++) {
+        if (n % i == 0 || n == 1) flag++;
+      }
+
+      if (flag == 0) document.write("Number is Prime");
+      else document.write("Number is not Prime");
+    </script>
+  </body>
+</html>

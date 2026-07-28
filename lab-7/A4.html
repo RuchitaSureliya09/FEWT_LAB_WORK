@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+</head>
+<body>
+    <!-- 4. Write a JavaScript program to validate user data given from the HTML form (A)
+         1) username must be of minimum 8 characters
+         2) password must contain at least 1 digit and 1 special character and should be between 8-12
+         characters
+         3) password and repeat password must be same
+         4) age must be greater than 18 (calculate from date of birth)
+         5) enrollment must be of 11 digits
+         6) email validation -->
+    
+    <div class="container mx-auto col-6">
+        <form action="" method="post" onsubmit="return validateForm(event)">
+            <div class="h1 d-flex justify-content-center my-5">Student Registration</div>
+            <table class="table">
+                <tr>
+                <td><label for="username">User Name</label></td>
+                <td><input class="form-control" type="text" placeholder="Enter User Name" id="username" required></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email</label></td>
+                <td><input class="form-control" type="text" placeholder="Enter Email id" id="email" required></td>
+            </tr>
+            <tr>
+                <td><label for="enroll">Enrollment No.</label></td>
+                <td><input class="form-control" type="text" placeholder="Enter Enrollment No." id="enroll" required></td>
+            </tr>
+            <tr>
+                <td><label for="pass">Password</label></td>
+                <td><input class="form-control" type="password" placeholder="Enter Password" id="pass" required></td>
+            </tr>
+            <tr>
+                <td><label for="con-pass">Confirm Password</label></td>
+                <td><input class="form-control" type="password" placeholder="Enter Confirm Password" id="con-pass" required></td>
+            </tr>
+            <tr>
+                <td><label for="age">Age</label></td>
+                <td><input class="form-control" type="number" placeholder="Enter Age" id="age" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="d-flex row"><input class="form-control w-25 ms-5" type="submit" value="Submit">  <input class="form-control w-25 ms-4" type="reset" value="Reset"></td>
+            </tr>
+            </table>
+        </form>
+    </div>
+
+    <script>
+        
+        function validateForm(e) {
+            e.preventDefault(); // form submission
+            var username = document.getElementById("username").value;
+            var email = document.getElementById("email").value;
+            var enroll = document.getElementById("enroll").value;
+            var pass = document.getElementById("pass").value;
+            var conPass = document.getElementById("con-pass").value;
+            var age = document.getElementById("age").value;
+            
+            userpattern = /^[a-zA-Z]{3,20}$/
+            passpattern = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/
+            emailpattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+            agepattern = /^[0-9]+$/
+            enrollpattern = /^[0-9]{11}$/
+
+            if (!userpattern.test(username)) {
+                alert("Invalid User Name ! It should be 3-20 characters long and contain only letters.");
+                return false;
+            }
+
+            if (!emailpattern.test(email)) {
+                alert("Invalid Email format !");
+                return false;
+            }
+
+            if (!enrollpattern.test(enroll)) {
+                alert("Invalid Enrollment No. ! It should be exactly 11 digits.");
+                return false;
+            }
+
+            if (!passpattern.test(pass)) {
+                alert("Invalid Password ! It should be 6-16 characters long and can contain letters, numbers, and special characters.");
+                return false;
+            }
+
+            if (pass !== conPass) {
+                alert("Passwords do not match !");
+                return false;
+            }
+
+            if (!agepattern.test(age >= 18)) {
+                alert("Invalid Age ! It should be greater than 18.");
+                return false;
+            }
+
+            return true; // Form is valid
+        }
+    </script>
+</body>
+</html>

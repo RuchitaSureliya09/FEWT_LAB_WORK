@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A5</title>
+  </head>
+  <body>
+    <script>
+      // 5. Write a JavaScript that uses a loop that searches a word in sentence held in an array, returning the
+      // index of the word. (B)
+      
+      let arr = prompt("Enter words sapreted by space");
+      arr=arr.split(" ");
+
+      let word = prompt("Enter any word ");
+
+      for (let index = 0; index < arr.length; index++) {
+        if (arr[index] == word) {
+          document.write(word +" at index : " + index);
+          break;
+        }
+      }
+    </script>
+  </body>
+</html>

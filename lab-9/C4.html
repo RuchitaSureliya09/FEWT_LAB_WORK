@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C4</title>
+
+    <style>
+      #myImg {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+
+      #food {
+        position: absolute;
+        left: 300px;
+        top: 300px;
+      }
+
+      #gameArea {
+        position: relative;
+        margin-top: 20px;
+        width: 100%;
+        height: calc(100vh - 120px);
+        overflow: hidden;
+      }
+
+      button {
+        height: 40px;
+        padding: 10px;
+        background-color: blue;
+        color: white;
+        border-radius: 3px;
+        border: none;
+        font-size: large;
+      }
+
+      #btn {
+        margin-left: 630px;
+        margin-top: 50px;
+      }
+
+      #c1 {
+        float: left;
+        margin-left: 400px;
+      }
+
+      #c2 {
+        float: right;
+        margin-right: 400px;
+      }
+
+      #head {
+        padding-top: 5px;
+        padding-bottom: 15px;
+        background-color: rgb(247, 231, 139);
+      }
+    </style>
+  </head>
+
+  <body onkeyup="checkInput(event)">
+    <div id="head">
+      <h1>
+        <div id="c1">❤️ Current Life : <span id="currentLifeSpan">3</span></div>
+        <div id="c2">✨ Current Score : <span id="currentScoreSpan">0</span></div>
+      </h1>
+      <br />
+
+      <div id="btn">
+        <button onclick="startLeft()">Left</button>
+        <button onclick="startRight()">Right</button>
+        <button onclick="startTop()">Top</button>
+        <button onclick="startBottom()">Bottom</button>
+      </div>
+    </div>
+    <div id="gameArea">
+      <img src="Snake_right.png" id="myImg" />
+      <img src="food.png" id="food" onclick="changefoodPosition()" />
+    </div>
+    <src ="food.png" id="food" onclick="changefoodPosition()" />
+
+    <script>
+      currentX = 0;
+      currentY = 100;
+      intRef = 0;
+      currentLife = 3;
+      currentScore = -1;
+
+      foodX = 300;
+      foodY = 300;
+
+      currentSpeed = 10;
+
+      function checkInput(e) {
+        if (e.key == "ArrowUp") {
+          startTop();
+        }
+        if (e.key == "ArrowDown") {
+          startBottom();
+        }
+        if (e.key == "ArrowLeft") {
+          startLeft();
+        }
+        if (e.key == "ArrowRight") {
+          startRight();
+        }
+        console.log(e);
+      }
+
+      function checkLimit() {
+        let gameArea = document.getElementById("gameArea");
+
+        if (
+          currentX > gameArea.clientWidth - 85 ||
+          currentX < 0 ||
+          currentY > gameArea.clientHeight - 85 ||
+          currentY < 0
+        ) {
+          currentLife--;
+          currentX = gameArea.clientWidth / 2;
+          currentY = gameArea.clientHeight / 2;
+
+          document.getElementById("myImg").style.left = currentX + "px";
+          document.getElementById("myImg").style.top = currentY + "px";
+
+          document.getElementById("currentLifeSpan").innerHTML = currentLife;
+        }
+        if (currentLife <= 0) {
+          clearInterval(intRef);
+
+          document.body.innerHTML = `
+        <div id="gameOver" style="
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+        ">
+            <h1 style="color:white;font-family:Arial;">
+                🌟 Final Score : ${currentScore}
+            </h1>
+
+            <img src="gameover.gif" alt="Game Over">
+        </div>
+    `;
+
+          document.body.style.margin = "0";
+          document.body.style.display = "flex";
+          document.body.style.justifyContent = "center";
+          document.body.style.alignItems = "center";
+          document.body.style.height = "100vh";
+          document.body.style.backgroundColor = "black";
+        }
+
+        if (
+          foodX < currentX + 100 &&
+          foodX > currentX - 100 &&
+          foodY < currentY + 100 &&
+          foodY > currentY - 100
+        ) {
+          changefoodPosition();
+        }
+      }
+
+      function startRight() {
+        clearInterval(intRef);
+        intRef = setInterval(moveRight, currentSpeed);
+      }
+      function moveRight() {
+        currentX++;
+        imgRef = document.getElementById("myImg");
+        imgRef.src = "Snake_right.png";
+        imgRef.style.left = currentX + "px";
+        checkLimit();
+      }
+
+      function startLeft() {
+        clearInterval(intRef);
+        intRef = setInterval(moveLeft, currentSpeed);
+      }
+      function moveLeft() {
+        currentX--;
+        imgRef = document.getElementById("myImg");
+        imgRef.src = "Snake_left.png";
+        imgRef.style.left = currentX + "px";
+        checkLimit();
+      }
+
+      function startTop() {
+        clearInterval(intRef);
+        intRef = setInterval(moveTop, currentSpeed);
+      }
+      function moveTop() {
+        currentY--;
+        imgRef = document.getElementById("myImg");
+        imgRef.src = "Snake_top.png";
+        imgRef.style.top = currentY + "px";
+        checkLimit();
+      }
+
+      function startBottom() {
+        clearInterval(intRef);
+        intRef = setInterval(moveBottom, currentSpeed);
+      }
+      function moveBottom() {
+        currentY++;
+        imgRef = document.getElementById("myImg");
+        imgRef.src = "Snake_bottom.png";
+        imgRef.style.top = currentY + "px";
+        checkLimit();
+      }
+
+      function changefoodPosition() {
+        currentScore++;
+        if (currentScore > 5) {
+          currentSpeed = 5;
+        }
+        if (currentSpeed > 10) {
+          currentSpeed = 1;
+        }
+        document.getElementById("currentScoreSpan").innerHTML = currentScore;
+
+        let gameArea = document.getElementById("gameArea");
+
+        foodX = Math.floor(Math.random() * (gameArea.clientWidth - 100));
+        foodY = Math.floor(Math.random() * (gameArea.clientHeight - 100));
+
+        foodRef = document.getElementById("food");
+        foodRef.style.left = foodX + "px";
+        foodRef.style.top = foodY + "px";
+      }
+
+      changefoodPosition();
+    </script>
+  </body>
+</html>

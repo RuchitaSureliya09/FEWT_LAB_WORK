@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A2</title>
+  </head>
+
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background-color: rgb(164, 243, 164);
+      text-align: center;
+      line-height: 200px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+  <body>
+    <!-- 2. WAP to recognize which mouse event is ƒired. (A) -->
+
+    <div id="box">Mouse Event</div>
+
+    <script>
+      var box = document.getElementById("box");
+
+      box.addEventListener("click", function () {
+        box.innerHTML = "Mouse clicked";
+      });
+
+      box.addEventListener("dblclick", function () {
+        box.innerHTML = "Mouse double clicked";
+      });
+
+      box.addEventListener("mousedown", function () {
+        box.innerHTML = "Mouse down";
+      });
+
+      box.addEventListener("mouseup", function () {
+        box.innerHTML = "Mouse up";
+      });
+
+      box.addEventListener("mousemove", function () {
+        box.innerHTML = "Mouse moved";
+      });
+
+      box.addEventListener("mouseover", function () {
+        box.innerHTML = "Mouse over";
+      });
+
+      box.addEventListener("mouseleave", function () {
+        box.innerHTML = "Mouse leaved";
+      });
+
+      box.addEventListener("mouseout", function () {
+        box.innerHTML = "Mouse out";
+      });
+
+      box.addEventListener("mouseenter", function () {
+        box.innerHTML = "Mouse entered";
+      });
+
+      box.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+        box.innerHTML = "Right Click";
+      });
+
+      box.addEventListener("wheel", function () {
+        box.innerHTML = "Mouse scroll";
+      });
+    </script>
+  </body>
+</html>

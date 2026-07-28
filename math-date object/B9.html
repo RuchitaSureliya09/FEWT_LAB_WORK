@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B9</title>
+</head>
+<body>
+    <script>
+        // 9. Generate a Random Password (digits only) of user-defined length using the Math object. (B) 
+
+        let len = prompt("Enter password length :")
+        pass = ''
+
+        for (let index = 0; index < len; index++) {
+            pass += Math.floor(Math.random()*10)
+        }
+
+        document.write("Password : "+pass)
+        
+    </script>
+</body>
+</html>
