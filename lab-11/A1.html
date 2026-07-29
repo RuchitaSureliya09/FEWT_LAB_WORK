@@ -7,22 +7,24 @@
   </head>
   <body>
     <script>
-        class Student{
-            constructor (roll_no,name,age){
-                this.roll_no = roll_no;
-                this.name = name;
-                this.age = age;
-            }
-
-            display(){
-                console.log("Roll_no : "+this.roll_no);
-                console.log("Name : "+this.name);
-                console.log("Age : "+this.age);
-            }
+      // 1. Demonstrate how to create a class in Java Script. (A)
+      
+      class Student {
+        constructor(roll_no, name, age) {
+          this.roll_no = roll_no;
+          this.name = name;
+          this.age = age;
         }
 
-        const info = new Student(128,"Ruchita",18);
-        info.display();
+        display() {
+          console.log("Roll_no : " + this.roll_no);
+          console.log("Name : " + this.name);
+          console.log("Age : " + this.age);
+        }
+      }
+
+      const info = new Student(128, "Ruchita", 18);
+      info.display();
     </script>
   </body>
 </html>
