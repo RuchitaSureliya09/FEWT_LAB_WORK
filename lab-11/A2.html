@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A2</title>
+</head>
+<body>
+    <script>
+        const arr = [1,2,3,4,5]
+        copyarr = [...arr]
+        mergearr = [...arr , ...copyarr]
+
+        console.log(copyarr);
+        console.log(mergearr);
+
+        obj1 = {
+            name : "Ruchita",
+            roll_no : 128,
+            age : 18
+        }
+
+        obj2 = {...obj1}
+        obj3 = {enroll : 25010101244 , ...obj1}
+
+        console.log(obj1)
+        console.log(obj2)
+        console.log(obj3)
+
+    </script>
+</body>
+</html>

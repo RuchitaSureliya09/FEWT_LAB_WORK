@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A1</title>
+  </head>
+  <body>
+    <script>
+        class Student{
+            constructor (roll_no,name,age){
+                this.roll_no = roll_no;
+                this.name = name;
+                this.age = age;
+            }
+
+            display(){
+                console.log("Roll_no : "+this.roll_no);
+                console.log("Name : "+this.name);
+                console.log("Age : "+this.age);
+            }
+        }
+
+        const info = new Student(128,"Ruchita",18);
+        info.display();
+    </script>
+  </body>
+</html>

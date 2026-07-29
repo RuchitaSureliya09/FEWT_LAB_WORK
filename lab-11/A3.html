@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A3</title>
+</head>
+<body>
+    <script>
+        arr = [1,2,3,4,5]
+
+        console.log("Array :");
+
+        for (const element of arr) {
+            console.log(element);
+        }
+
+        obj = {
+            name : "Ruchita",
+            roll_no : 128,
+            age : 18
+        }
+
+        console.log("Object : ");
+
+        // object ma sometime for of loop work nai kare 
+        // then object mate for in loop use karvi
+        
+        for (const element in obj) {
+            console.log(element+ " =",obj[element]);
+        }
+    </script>
+</body>
+</html>
