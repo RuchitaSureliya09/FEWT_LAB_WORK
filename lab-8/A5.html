@@ -8,18 +8,13 @@
   <body>
     <!-- 5. WAP to demonstrate change in properties of HTML element using JavaScript. (A) -->
 
+    <h1>Hello world</h1>
+
     <div id="pro">
       A paragraph is a self-contained unit of writing that develops a single,
       unified idea or point. It typically begins on a new line and consists of a
       topic sentence supported by related details, followed by a concluding
-      sentence that summarizes the main thought. A paragraph is a self-contained
-      unit of writing that develops a single, unified idea or point. It
-      typically begins on a new line and consists of a topic sentence supported
-      by related details, followed by a concluding sentence that summarizes the
-      main thought. A paragraph is a self-contained unit of writing that
-      develops a single, unified idea or point. It typically begins on a new
-      line and consists of a topic sentence supported by related details,
-      followed by a concluding sentence that summarizes the main thought.
+      sentence that summarizes the main thought.
     </div>
 
     <br><br>
@@ -28,11 +23,14 @@
     <script>
       var pro = document.getElementById("pro");
       pro.addEventListener("click", function () {
+        pro.style.backgroundColor = "lightgrey";
         pro.style.color = "blue";
+        pro.style.fontSize = "25px";
       });
 
+      var tag = document.getElementsByTagName("h1");
       function something() {
-        pro.style.backgroundColor = "lightgrey";
+        tag[0].style.fontSize = "50px";
       }
     </script>
   </body>

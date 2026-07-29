@@ -9,40 +9,51 @@
     <script>
       // 2. Demonstrate the difference between let and var. (A)
 
-
       //                |     var     |      let     |     const
       // ---------------------------------------------------------------
       // reassign       |      ✓      |      ✓      |      ⨉
       // redeclare      |      ✓      |      ⨉      |      ⨉
       // scop           |   function  |     block    |     block
 
-
       var a = 10;
-      let b = 30;
+
+      console.log("function :");
+      console.log("original value of a : " + a);
 
       function f1() {
-        document.write("function :<br>");
         a = 20;
-        document.write(
-          "After assign new value of a inside function : " + a + "<br>",
-        );
+        console.log("After assign new value of a inside function : " + a);
 
         var a = 16;
-        document.write(
-          "After deaclare new var a inside function : " + a + "<br><br>",
-        );
+        console.log("After deaclare new var a inside function : " + a);
       }
 
-      f1();
+      f1(); // call function f1
+
+      console.log("before deaclare new value a outside function : " + a);
+
+      a = 25;
+      console.log("After assign new value a outside function : " + a);
+
+      var a = 9;
+      console.log("After deaclare new var a outside function : " + a);
+
+      console.log("--------------------");
+
+      let b = 30;
+
+      console.log("block :");
+      console.log("original value of b : " + b);
+
+      b = 90;
+      console.log("before assign new value of b outside block : " + b);
 
       if (true) {
-        document.write("block :<br>");
-        document.write(
-          "After assign new value of a inside block : " + b + "<br>",
-        );
+        b = 50;
+        console.log("After assign new value of b inside block : " + b);
 
-        //b=40;
-        //document.write("After deaclare new var a inside block : "+b) --> error redeclare not allow
+        // var b = 40;
+        //console.log("After deaclare new var a inside block : "+b) --> error redeclare not allow
       }
     </script>
   </body>

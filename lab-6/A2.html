@@ -11,23 +11,24 @@
 
       let arr = [1, 2, 3, 4, 5];
 
-      document.write("<h2>" + "Original Array" + "</h2><br>");
-      document.write(arr + "<br><br>");
+      console.log("Original Array");
+      console.log(arr);
 
-      document.write("<h2>" + "Methods" + "</h2><br>");
+      console.log("-------------------------")
+      console.log("Methods");
 
       arr.push(6);
-      document.write("<b>Push : </b>" + arr + "<br><br>");
+      console.log("Push : " + arr);
       arr.pop();
-      document.write("<b>Pop : </b>" + arr + "<br><br>");
+      console.log("Pop : " + arr);
       arr.shift();
-      document.write("<b>Shift : </b>" + arr + "<br><br>");
+      console.log("Shift : " + arr);
       arr.unshift(0);
-      document.write("<b>Unshift : </b>" + arr + "<br><br>");
+      console.log("Unshift : " + arr);
       arr.splice(1, 3, "one", "two", "three");
-      document.write("<b>Splice : </b>" + arr + "<br><br>");
+      console.log("Splice : " + arr);
       arr.sort();
-      document.write("<b>Sort : </b>" + arr + "<br><br>");
+      console.log("Sort : " + arr);
     </script>
   </body>
 </html>

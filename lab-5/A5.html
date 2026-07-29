@@ -10,17 +10,22 @@
       // 5. Write a JavaScript that uses a loop that searches a word in sentence held in an array, returning the
       // index of the word. (B)
       
-      let arr = prompt("Enter words sapreted by space");
+      let arr = prompt("Enter words sapreted by one space like, (wrod1 word2 word3 etc.)");
       arr=arr.split(" ");
 
       let word = prompt("Enter any word ");
+      let flag=0;
 
       for (let index = 0; index < arr.length; index++) {
         if (arr[index] == word) {
-          document.write(word +" at index : " + index);
+          console.log(word +" at index : " + index);
+          flag=1;
           break;
         }
       }
+
+      if(flag==0)
+        console.log("Given word "+word+" not found!")
     </script>
   </body>
 </html>

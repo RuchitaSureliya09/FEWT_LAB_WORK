@@ -8,15 +8,15 @@
   <body>
     <script>
       // 1. WAP to demonstrate callbacks in JavaScript. (A)
-      // 4. Create a Snake game using Java script. (C)
 
       function greet(name, callback) {
-        document.write("<h2> Hello, I am " + name + "</h2>");
+        console.log("Hello, I am " + name);
+        console.log("Have a nice day !");
         callback();
       }
 
       function bye() {
-        document.write("Good bye !</h3>");
+        console.log("Good bye !");
       }
 
       greet("Ruchita", bye);
