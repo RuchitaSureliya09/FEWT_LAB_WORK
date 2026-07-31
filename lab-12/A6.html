@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A6</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- 6. write a jQuery program to append new row to existing table when clicked on button. (A) -->
+    
+    <div class="m-5">
+      <table class="table table-striped" id="c1">
+        <thead>
+          <td>Roll No</td>
+          <td>Student Name</td>
+        </thead>
+        <tbody>
+          <tr>
+            <td>128</td>
+            <td>Ruchita</td>
+          </tr>
+          <tr>
+            <td>132</td>
+            <td>Disha</td>
+          </tr>
+          <tr>
+            <td>144</td>
+            <td>Lency</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button id="btn1" class="btn btn-primary mt-5 me-2">Click</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@4.0.0/dist/jquery.min.js"></script>
+
+    <script>
+      $("#btn1").click(() => {
+        $("#c1").append("<tr><td>169</td><td>Dreamy</td></tr>");
+      });
+    </script>
+  </body>
+</html>

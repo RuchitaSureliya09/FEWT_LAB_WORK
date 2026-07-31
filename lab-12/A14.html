@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A14</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- 14. write a jQuery program to set background of an input element to red when in focus and back to white when not in focus. (A) -->
+
+    <div class="m-5">
+      <input id="myinput" />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@4.0.0/dist/jquery.min.js"></script>
+
+    <script>
+      $("#myinput").focusin(() => {
+        $("input").css("background", "red");
+      });
+
+      $("#myinput").focusout(() => {
+        $("input").css("background", "white");
+      });
+    </script>
+  </body>
+</html>

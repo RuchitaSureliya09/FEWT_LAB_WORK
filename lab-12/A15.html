@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A15</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- 15. write a jQuery program to set background of an element to red when mouse enter on all paragraphs (A) -->
+
+    <div class="m-5">
+      <p id="p1">
+        Paragraph Writing for Kids teaches the basic skills of composition, with
+        special emphasis on the thought processes necessary for clear, organized
+        writing. Teaching kids how to write a paragraph starts with clear
+        guidance and engaging activities. Our step-by-step approach covers
+        paragraph writing ideas and offers plenty of paragraph writing practice.
+        Our resources make teaching paragraph writing simple and effective.
+        Students are guided through the creation of five types of paragraphs:
+      </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@4.0.0/dist/jquery.min.js"></script>
+
+    <script>
+      $("#p1").mouseenter(() => {
+        $("p").css("background", "red");
+      });
+    </script>
+  </body>
+</html>
