@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B17</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- 17. write a jQuery program to validate the darshan enrollment no when user leave the textbox (blur). (B) -->
+
+    <div class="m-5 col-4">
+      <label for="enroll" class="h2">Enter Darshan Enrollment No:</label
+      ><br /><br />
+      <input
+        type="text"
+        id="enroll"
+        placeholder="enroll no."
+        class="form-control"
+      />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@4.0.0/dist/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(() => {
+        $("#enroll").blur((e) => {
+          var inputVal = $(e.target).val().trim();
+
+          var enroll = /^[0-9]{11}$/;
+
+          $(e.target).removeClass("is-valid is-invalid");
+
+          if (inputVal === "") {
+              $(e.target).addClass("is-invalid");
+              console.log("Validation Failed: Empty field.");
+              alert("Enrollment number is required.");
+          } else if (!enroll.test(inputVal)) {
+              $(e.target).addClass("is-invalid");
+              console.log("Validation Failed: Invalid format (" + inputVal + ")");
+              alert("Invalid Format! Must be exactly 11 digits.");
+          } else {
+              $(e.target).addClass("is-valid");
+              console.log("Validation Passed: " + inputVal);
+              alert("Valid Enrollment Number.");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

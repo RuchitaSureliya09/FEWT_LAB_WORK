@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B16</title>
+  </head>
+  <body>
+    <!-- 16. write a jQuery program to print current mouse coordinates on console. (B) -->
+
+    <h2>Move your mouse around the page</h2>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@4.0.0/dist/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(() => {
+        $(document).click((e) => {
+          console.log("X: " + e.pageX + " and " + "Y: " + e.pageY);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C18</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- 18. write a jQuery program to validate complete student registration form. (C) -->
+
+    <div class="container mx-auto col-6">
+      <form action="" method="post">
+        <div class="h1 d-flex justify-content-center my-5">
+          Student Registration
+        </div>
+        <table class="table">
+          <tr>
+            <td><label for="username">User Name</label></td>
+            <td>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Enter User Name"
+                id="username"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="email">Email</label></td>
+            <td>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Enter Email id"
+                id="email"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="enroll">Enrollment No.</label></td>
+            <td>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Enter Enrollment No."
+                id="enroll"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="pass">Password</label></td>
+            <td>
+              <input
+                class="form-control"
+                type="password"
+                placeholder="Enter Password"
+                id="pass"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="con-pass">Confirm Password</label></td>
+            <td>
+              <input
+                class="form-control"
+                type="password"
+                placeholder="Enter Confirm Password"
+                id="con-pass"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="age">Age</label></td>
+            <td>
+              <input
+                class="form-control"
+                type="number"
+                placeholder="Enter Age"
+                id="age"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <div class="d-flex gap-3 ms-3">
+                <button
+                  class="btn btn-primary px-4"
+                  type="submit"
+                  id="submitbtn"
+                >
+                  Submit
+                </button>
+                <button class="btn btn-warning px-4" type="reset" id="resetbtn">
+                  Reset
+                </button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@4.0.0/dist/jquery.min.js"></script>
+
+    <script>
+      $("#resetbtn").click(() => {
+        $(".form-control").removeClass("is-valid is-invalid");
+      });
+
+      $("#submitbtn").click((e) => {
+        e.preventDefault(); // form submission
+        var username = $("#username").val().trim();
+        var email = $("#email").val().trim();
+        var enroll = $("#enroll").val().trim();
+        var pass = $("#pass").val().trim();
+        var conPass = $("#con-pass").val().trim();
+        var age = $("#age").val().trim();
+
+        userpattern = /^[a-zA-Z]{3,20}$/;
+        passpattern = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+        emailpattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        agepattern = /^[0-9]+$/;
+        enrollpattern = /^[0-9]{11}$/;
+
+        $(".form-control").removeClass("is-valid is-invalid");
+
+        if (!userpattern.test(username)) {
+          $("#username").addClass("is-invalid");
+          alert(
+            "Invalid User Name! It should be 3-20 characters long and contain only letters.",
+          );
+          return false;
+        } else {
+          $("#username").addClass("is-valid");
+        }
+
+        if (!emailpattern.test(email)) {
+          $("#email").addClass("is-invalid");
+          alert("Invalid Email format!");
+          return false;
+        } else {
+          $("#email").addClass("is-valid");
+        }
+
+        if (!enrollpattern.test(enroll)) {
+          $("#enroll").addClass("is-invalid");
+          alert("Invalid Enrollment No.! It should be exactly 11 digits.");
+          return false;
+        } else {
+          $("#enroll").addClass("is-valid");
+        }
+
+        if (!passpattern.test(pass)) {
+          $("#pass").addClass("is-invalid");
+          alert(
+            "Invalid Password! It should be 6-16 characters long and can contain letters, numbers, and special characters.",
+          );
+          return false;
+        } else {
+          $("#pass").addClass("is-valid");
+        }
+
+        if (pass !== conPass || conPass === "") {
+          $("#con-pass").addClass("is-invalid");
+          alert("Passwords do not match!");
+          return false;
+        } else {
+          $("#con-pass").addClass("is-valid");
+        }
+
+        if (age === "" || isNaN(age) || parseInt(age) < 18) {
+          $("#age").addClass("is-invalid");
+          alert("Invalid Age! It should be 18 or older.");
+          return false;
+        } else {
+          $("#age").addClass("is-valid");
+        }
+
+        $("input").val("");
+        $(".form-control").removeClass("is-valid is-invalid");
+        return true;
+      });
+    </script>
+  </body>
+</html>

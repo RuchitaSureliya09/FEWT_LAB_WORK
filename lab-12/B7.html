@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B7</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- 7. write a jQuery program to change background color to be "red" to all the childrens of div with
+            "myDiv"as id when user click on a button. (B) -->
+
+    <div class="m-5">
+      <div id="myDiv">
+        <ul id="myul">
+          <li>Dreamy</li>
+          <li id="myEle">Lency</li>
+          <li>Kinjal</li>
+          <li>Disha</li>
+        </ul>
+
+        <p>
+          7. write a jQuery program to change background color to be "red" to
+          all the childrens of div with "myDiv"as id when user click on a
+          button. (B)
+        </p>
+      </div>
+
+      <button id="btn1" class="btn btn-success mt-3 me-3">Click</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@4.0.0/dist/jquery.min.js"></script>
+
+    <script>
+      $("#btn1").click(() => {
+        $("#myDiv").children().css("background-color", "red");
+      });
+    </script>
+  </body>
+</html>
