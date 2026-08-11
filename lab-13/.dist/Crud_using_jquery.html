@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Student CRUD</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="container mt-5">
+      <div class="text-center h1 mb-5">STUDENT CRUD SYSTEM</div>
+
+      <div class="row mb-3">
+        <div class="col-md-1">
+          <label>First Name</label>
+        </div>
+
+        <div class="col-md-5">
+          <input type="text" id="fname" class="form-control" />
+        </div>
+
+        <div class="col-md-1">
+          <label>Age</label>
+        </div>
+
+        <div class="col-md-5">
+          <input type="number" id="age" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-1">
+          <label>Last Name</label>
+        </div>
+
+        <div class="col-md-5">
+          <input type="text" id="lname" class="form-control" />
+        </div>
+
+        <div class="col-md-1">
+          <label>Semester</label>
+        </div>
+
+        <div class="col-md-5">
+          <input type="number" id="semester" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-1">
+          <label>Roll No</label>
+        </div>
+
+        <div class="col-md-5">
+          <input type="number" id="rollno" class="form-control" />
+        </div>
+
+        <div class="col-md-1">
+          <label>Image</label>
+        </div>
+
+        <div class="col-md-5">
+          <input type="file" id="image" class="form-control" />
+        </div>
+      </div>
+
+      <div class="text-center mt-5">
+        <button class="btn btn-primary" id="addBtn">Add Student</button>
+        <button class="btn btn-success" id="updateBtn">Update Student</button>
+      </div>
+
+      <div class="mt-3">
+        ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      </div>
+
+      <div class="text-center h3 mt-3 mb-5">STUDENT DETAILS</div>
+
+      <table class="table table-bordered table-striped text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>Image</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Semester</th>
+            <th>Roll No</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@4.0.0/dist/jquery.min.js"></script>
+
+    <script>
+      var students = [];
+      var editIndex = -1;
+
+      function displayStudents() {
+        var rows = "";
+
+        for (var i = 0; i < students.length; i++) {
+          rows += "<tr>";
+          rows += "<td><img src='" + students[i].image + "' width='60'></td>";
+          rows += "<td>" + students[i].fname + "</td>";
+          rows += "<td>" + students[i].lname + "</td>";
+          rows += "<td>" + students[i].age + "</td>";
+          rows += "<td>" + students[i].semester + "</td>";
+          rows += "<td>" + students[i].rollno + "</td>";
+          rows += "<td>";
+          rows +=
+            "<button class='btn btn-warning btn-sm' onclick='editStudent(" +
+            i +
+            ")'>Edit</button> ";
+          rows +=
+            "<button class='btn btn-danger btn-sm' onclick='deleteStudent(" +
+            i +
+            ")'>Delete</button>";
+          rows += "</td>";
+          rows += "</tr>";
+        }
+
+        $("#tableBody").html(rows);
+      }
+
+      function clearFields() {
+        $("#fname").val("");
+        $("#lname").val("");
+        $("#age").val("");
+        $("#semester").val("");
+        $("#rollno").val("");
+        $("#image").val("");
+      }
+
+      $("#addBtn").click(function () {
+        var fname = $("#fname").val();
+        var lname = $("#lname").val();
+        var age = $("#age").val();
+        var semester = $("#semester").val();
+        var rollno = $("#rollno").val();
+        var image = $("#image").val();
+
+        if (
+          fname == "" ||
+          lname == "" ||
+          age == "" ||
+          semester == "" ||
+          rollno == "" ||
+          image == ""
+        ) {
+          alert("Please fill all fields");
+          return;
+        }
+
+        students.push({
+          fname: fname,
+          lname: lname,
+          age: age,
+          semester: semester,
+          rollno: rollno,
+          image: image,
+        });
+
+        clearFields();
+        displayStudents();
+      });
+
+      function editStudent(index) {
+        $("#fname").val(students[index].fname);
+        $("#lname").val(students[index].lname);
+        $("#age").val(students[index].age);
+        $("#semester").val(students[index].semester);
+        $("#rollno").val(students[index].rollno);
+        
+        editIndex = index;
+        console.log(editIndex);
+      }
+
+      $("#updateBtn").click(function () {
+        if (editIndex == -1) {
+          alert("Select a student first");
+          return;
+        }
+
+        students[editIndex].fname = $("#fname").val();
+        students[editIndex].lname = $("#lname").val();
+        students[editIndex].age = $("#age").val();
+        students[editIndex].semester = $("#semester").val();
+        students[editIndex].rollno = $("#rollno").val();
+        students[editIndex].image = $("#image").val();
+
+        editIndex = -1;
+
+        clearFields();
+        displayStudents();
+      });
+
+      function deleteStudent(index) {
+        students.splice(index, 1);
+        displayStudents();
+      }
+    </script>
+  </body>
+</html>
