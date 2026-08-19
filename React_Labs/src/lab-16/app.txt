@@ -3,16 +3,11 @@ jyare lab-16 run karvi hoi tyare App.jsx ma niche mujab lakhvu
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout/>}>
-            <Route index element={<Home/>} />
-            <Route path="/about" element={<About/>} />
-            <Route path="/info" element={<Info/>} />
-            <Route path="/contact" element={<Contact/>} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      
+        <A1_Child/><br/>
+        <A3/><br/>
+        <A2/>
+
     </>
   );
 }

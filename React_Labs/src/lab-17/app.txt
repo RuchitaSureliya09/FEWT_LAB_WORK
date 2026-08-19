@@ -3,11 +3,10 @@ jyare lab-17 run karvi hoi tyare App.jsx ma niche mujab lakhvu
 function App() {
   return (
     <>
-      
-        <A1_Child/><br/>
-        <A3/><br/>
-        <A2/>
-
+      <A1/>
+      <A2/>
+      <A3/>
+      <A4/>
     </>
   );
 }
