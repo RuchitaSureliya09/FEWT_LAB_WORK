@@ -15,8 +15,12 @@
 
   <body>
     <div class="container mt-5">
-      <div class="text-center h1 mb-5">STUDENT CRUD SYSTEM</div>
+      <div class="text-center h1">Student CRUD System</div>
+      <div class="row justify-content-center mb-5">
+        Create • Read • Update • Delete using jQuery
+      </div>
 
+      <div class="row h2 justify-content-center mb-4">Student Information</div>
       <div class="row mb-3">
         <div class="col-md-1">
           <label>First Name</label>
@@ -71,16 +75,16 @@
         </div>
       </div>
 
-      <div class="text-center mt-5">
+      <div class="text-center mt-4">
         <button class="btn btn-primary" id="addBtn">Add Student</button>
-        <button class="btn btn-success" id="updateBtn">Update Student</button>
+        <button class="btn btn-warning" id="updateBtn">Update Student</button>
       </div>
 
-      <div class="mt-3">
+      <div class="mt-5">
         ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       </div>
 
-      <div class="text-center h3 mt-3 mb-5">STUDENT DETAILS</div>
+      <div class="text-center h3 mt-3 mb-5">Student List</div>
 
       <table class="table table-bordered table-striped text-center">
         <thead class="table-dark">
@@ -118,7 +122,7 @@
           rows += "<td>" + students[i].rollno + "</td>";
           rows += "<td>";
           rows +=
-            "<button class='btn btn-warning btn-sm' onclick='editStudent(" +
+            "<button class='btn btn-info btn-sm' onclick='editStudent(" +
             i +
             ")'>Edit</button> ";
           rows +=
@@ -180,7 +184,7 @@
         $("#age").val(students[index].age);
         $("#semester").val(students[index].semester);
         $("#rollno").val(students[index].rollno);
-        
+
         editIndex = index;
         console.log(editIndex);
       }
