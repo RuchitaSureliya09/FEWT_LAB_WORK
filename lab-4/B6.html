@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B6</title>
+  </head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+    crossorigin="anonymous"
+  />
+  <body>
+    <!-- 6. Write an HTML page with JavaScript that takes a number from popup box in the range 0-999 and
+           display it in words. If the number is out of range, it should show “out of range” and if it is not a
+           number ,it should show “not a number” message in the result box. (A) -->
+
+    <div class="row m-5">
+      <div class="col-3">
+        <h2>Number to Words</h2>
+      </div>
+      <div class="col-5">
+        <input type="text" id="result" class="form-control" readonly />
+      </div>
+      <div class="col"></div>
+    </div>
+
+    <script>
+      let num = prompt("Enter a number (0-999):");
+      let temp = num;
+      let result = document.getElementById("result");
+
+      if (num === null || num.trim() === "" || isNaN(num)) {
+        result.value = "not a number";
+      } else {
+        num = Number(num);
+
+        if (num < 0 || num > 999 || !Number.isInteger(num)) {
+          result.value = "out of range";
+        } else {
+          let ones = [
+            "",
+            "One",
+            "Two",
+            "Three",
+            "Four",
+            "Five",
+            "Six",
+            "Seven",
+            "Eight",
+            "Nine",
+          ];
+
+          let teens = [
+            "Ten",
+            "Eleven",
+            "Twelve",
+            "Thirteen",
+            "Fourteen",
+            "Fifteen",
+            "Sixteen",
+            "Seventeen",
+            "Eighteen",
+            "Nineteen",
+          ];
+
+          let tens = [
+            "",
+            "",
+            "Twenty",
+            "Thirty",
+            "Forty",
+            "Fifty",
+            "Sixty",
+            "Seventy",
+            "Eighty",
+            "Ninety",
+          ];
+
+          let words = "";
+
+          if (num === 0) {
+            words = "Zero";
+          } else if (num >= 100) {
+            words += ones[Math.floor(num / 100)] + " Hundred";
+            num = num % 100;
+
+            if (num > 0) {
+              words += " ";
+            }
+          }
+
+          if (num >= 20) {
+            words += tens[Math.floor(num / 10)];
+            num = num % 10;
+
+            if (num > 0) {
+              words += " " + ones[num];
+            }
+          } else if (num >= 10) {
+            words += teens[num - 10];
+          } else if (num > 0) {
+            words += ones[num];
+          }
+
+          result.value = temp + " - " + words;
+        }
+      }
+    </script>
+  </body>
+</html>
