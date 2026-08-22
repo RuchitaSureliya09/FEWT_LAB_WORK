@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B5</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- 3. WAP to recognize which keyboard event is ƒired. (B) -->
+
+    <div class="row m-5">
+      <h2>Press any key on the keyboard</h2>
+
+      <div class="col-6 my-3">
+        <input
+          type="text"
+          id="txt"
+          class="form-control"
+          placeholder="Press a key here"
+        />
+      </div>
+
+      <p id="result"></p>
+    </div>
+
+    <script>
+      let input = document.getElementById("txt");
+      let result = document.getElementById("result");
+
+      input.addEventListener("keydown", (e) => {
+        result.innerHTML =
+          "Keyboard Event Fired: <b>keydown</b><br>" + "Key: " + event.key;
+      });
+
+      input.addEventListener("keypress", (e) => {
+        result.innerHTML =
+          "Keyboard Event Fired: <b>keypress</b><br>" + "Key: " + event.key;
+      });
+
+      input.addEventListener("keyup", (e) => {
+        result.innerHTML =
+          "Keyboard Event Fired: <b>keyup</b><br>" + "Key: " + event.key;
+      });
+    </script>
+  </body>
+</html>
