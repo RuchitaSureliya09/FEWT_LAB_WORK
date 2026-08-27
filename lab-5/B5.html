@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B5</title>
+  </head>
+  <body>
+    <script>
+      // 5. Write a JavaScript that uses a loop that searches a word in sentence held in an array, returning the
+      // index of the word. (B)
+
+      let sentence = [
+        "JavaScript",
+        "is",
+        "a",
+        "powerful",
+        "programming",
+        "language",
+      ];
+
+      let word = prompt("Enter word to search:");
+      let index = -1;
+
+      for (let i = 0; i < sentence.length; i++) {
+        if (sentence[i].toLowerCase() === word.toLowerCase()) {
+          index = i;
+          break;
+        }
+      }
+
+      document.write("<h1>Array : </h1><h3>"+sentence.join(" , ")+"</h3>");
+
+      if (index !== -1) {
+        document.write("\n<h2>Word found at index: " + index);
+      } else {
+        document.write("Word not found</h2>");
+      }
+    </script>
+  </body>
+</html>
