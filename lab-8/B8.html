@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B8</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <!-- 8. Write a JavaScript that handles following mouse events. Add necessary elements. (B)  
+     If the mouse is over the heading should turn yellow and if the mouse goes out of the heading it should turn black. 
+     If ƒndtime button is clicked show time and date information.
+     If button named “red” is clicked, background should change to red and 
+     If button named “green” is clicked, background should change to green. -->
+
+    <div class="text-center mt-5">
+      <div
+        id="heading"
+        class="h1 m-5"
+        onmouseover="mouseOver()"
+        onmouseout="mouseOut()"
+      >
+        Move Mouse Over This Heading
+      </div>
+
+      <button class="btn btn-primary me-4" onclick="findTime()">
+        Find Time
+      </button>
+      <button class="btn btn-danger me-4" onclick="redColor()">Red</button>
+      <button class="btn btn-success" onclick="greenColor()">Green</button>
+      <div id="datetime" class="h5 mt-5"></div>
+    </div>
+
+    <script>
+      function mouseOver() {
+        document.getElementById("heading").style.color = "yellow";
+      }
+
+      function mouseOut() {
+        document.getElementById("heading").style.color = "black";
+      }
+
+      function findTime() {
+        var date = new Date();
+        document.getElementById("datetime").innerHTML = date;
+      }
+
+      function redColor() {
+        document.body.style.backgroundColor = "red";
+      }
+
+      function greenColor() {
+        document.body.style.backgroundColor = "green";
+      }
+    </script>
+  </body>
+</html>
