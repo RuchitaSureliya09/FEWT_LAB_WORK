@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B11</title>
+  </head>
+  <body>
+    <script>
+      // 11. Calculate Total Days, Weekends, and Working Days between two dates. (B)
+
+      let startDate = new Date(prompt("Enter start date (YYYY-MM-DD):"));
+      let endDate = new Date(prompt("Enter end date (YYYY-MM-DD):"));
+
+      let totalDays = 0;
+      let weekends = 0;
+      let workingDays = 0;
+
+      while (startDate <= endDate) {
+        totalDays++;
+
+        let day = startDate.getDay();
+
+        if (day == 0 || day == 6) {
+          weekends++;
+        } else {
+          workingDays++;
+        }
+
+        startDate.setDate(startDate.getDate() + 1);
+      }
+
+      console.log("Total Days: " + totalDays);
+      console.log("Weekends: " + weekends);
+      console.log("Working Days: " + workingDays);
+    </script>
+  </body>
+</html>
