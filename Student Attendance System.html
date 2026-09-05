@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Attendance System</title>
+    <link rel="stylesheet" href="A1.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container-fluid py-4">
+      <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-11">
+          <div class="card shadow-lg p-4">
+            <h1 class="text-center mb-5">Student Attendance System</h1>
+
+            <div class="text-end mb-3">
+              <button class="btn btn-success me-2 fw-bold" onclick="checkAll()">
+                ✓ All Present
+              </button>
+
+              <button class="btn btn-danger fw-bold" onclick="uncheckAll()">
+                ⨉ All Absent
+              </button>
+            </div>
+
+            <div class="mb-3">
+              <label class="fw-bold mb-2" id="listTitle">
+                Present Roll Numbers
+              </label>
+
+              <textarea
+                id="absentList"
+                class="form-control"
+                placeholder="Enter roll numbers..."
+              ></textarea>
+
+              <div class="text-end mt-2">
+                <button
+                  class="btn btn-warning fw-bold"
+                  onclick="applyRollNumbers()"
+                >
+                  Apply
+                </button>
+              </div>
+            </div>
+
+            <div class="table-container scrollable-table">
+              <table class="table table-bordered table-hover text-center">
+                <thead class="table-dark">
+                  <tr>
+                    <th width="15%">Present/Absent</th>
+                    <th width="15%">Roll No</th>
+                    <th width="70%">Student Name</th>
+                  </tr>
+                </thead>
+
+                <tbody id="studentTable"></tbody>
+              </table>
+            </div>
+
+            <div class="text-center mt-4">
+              <button class="btn btn-primary me-2" onclick="submitAttendance()">
+                Submit Attendance
+              </button>
+
+              <button class="btn btn-secondary" onclick="resetAttendance()">
+                Reset
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      //================ Student List ===================//
+
+      let students = [
+        "Chitre Jeet Mehulbhai",
+        "Tanvi Mehta",
+        "Trivedi Harsh Umangkumar",
+        "Vrajrajsinh Gohil",
+        "Bhojani Dev Ankitbhai",
+        "Jani Shreya Vimal",
+        "Chauhan Krushna Sanjaybhai",
+        "Palsana Henish Sureshbhai",
+        "Thanki Aum Punitbhai",
+        "Dattani Pratham Chetan",
+        "Dholariya Marth Vinodbhai",
+        "Dhruv Dave",
+        "Boricha Niyanta Sanjaybhai",
+        "Rupareliya Manav Vikasbhai",
+        "Godhasara Peryben Rajeshbhai",
+        "Veer Turakhia",
+        "Kanzariya Utsav Bhagvanjibhai",
+        "Kesha Satishbhai Kaneriya",
+        "Maheta Kashish Sukeshbhai",
+        "Khagram Kruti Nileshbhai",
+        "Nandani Pareshkumar Rana",
+        "Limbasiya Harsh Hiteshbhai",
+        "Sarvaiya Aishwarya Harshadbhai",
+        "Rachhadiya Garv Bharatbhai",
+        "Dhabaliya Dhairya Amitkumar",
+        "Pambhar Nirdip Bhailalbhai",
+        "Zaveri Raxit Pareshbhai",
+        "Sureliya Ruchita Pankajbhai",
+        "Kathrani Rinal Dineshbhai",
+        "Madhwani Rutvi Hareshkumar",
+        "Sudani Meet Shaileshbhai",
+        "Varsani Disha Govindbhai",
+        "Prajapati Hetaviben Ganpatbhai",
+        "Pandya Aum Bhaveshbhai",
+        "Kataria Lipsit Bhavesh",
+        "Makwana Dhairya Mayur",
+        "Rangani Harsh Amitbhai",
+        "Dobariya Jenil Shantibhai",
+        "Kothari Uttam Maheshbhai",
+        "Naliyapara Mahek Bhaveshbhai",
+        "Virani Pujan Hiteshbhai",
+        "Deshani Harshil Chandubhai",
+        "Rathod Madhav Rohanbhai",
+        "Rabadiya Lency Pankajbhai",
+        "Dholu Dharmik Ghanshyambhai",
+        "Godhani Vishva Kamleshbhai",
+        "Ghetiya Khushkumar Niteshbhai",
+        "Javia Diya Mehul",
+        "Bhanderi Krisha Jitendra",
+        "Bosamiya Shriya Jitendrabhai",
+        "Zinzuvadiya Urvashi Bharatbhai",
+        "Sonagara Abhishek Kishorbhai",
+        "Patadia Hetvi Chetan",
+        "Banugariya Pushti Vimalbhai",
+        "Moral Satvi Ashish",
+        "Sodha Dhara Ashokbhai",
+        "Dholu Bansiben Kanubhai",
+        "Dhyani Hemant Patel",
+        "Detroja Velishkumar Dineshbhai",
+        "Avlani Neel Naimishbhai",
+        "Hedpara Spandan Pankajbhai",
+        "Rathod Jill Devendrabhai",
+        "Metaliya Jeelkumar Bhaveshbhai",
+        "Parmar Khushali Makanbhai",
+        "Jarsaniya Vatsal Pradipbhai",
+        "Hapaliya Vishvam Hareshbhai",
+        "Sojitra Ansh Miteshbhai",
+        "Jethwa Pushti Jayeshbhai",
+        "Dreamy Jatiya",
+        "Ramoliya Tirtha Ashokbhai",
+        "Mendapara Keyur Pareshbhai",
+        "Valani Dhruvkumar Ishvarbhai",
+        "Pandya Jeel Jitendra",
+        "Desai Margi Jigneshkumar",
+        "Sakhia Dhruva Darshankumar",
+        "Thakrar Diya Chiragbhai",
+        "Pethad Jainam Vinodbhai",
+        "Pandya Heet Vipulbhai",
+        "Siddique Shadab Sarfaraz",
+        "Kanzariya Janvi Mohanbhai",
+        "Amipara Yashkumar Rajeshbhai",
+        "Parmar Harsh Kiritbhai",
+        "Vaghela Tirthkumar Maheshbhai",
+        "Vekariya Khushi Priyeshbhai",
+        "Pathar Nisarg Sureshbhai",
+        "Adroja Manav Rajeshbhai",
+        "Joshi Bhargav Rajeshkumar",
+        "Makwana Bhumi Digneshbhai",
+        "Depani Hetvi Pareshbhai",
+        "Kakkad Shreya Piyushbhai",
+        "Rathod Viral Kamaleshbhai",
+        "Kasundra Yug Prabhulal",
+        "Patel Krisha Chirag",
+        "Pansuriya Ayush Rajeshbhai",
+        "Rupapara Jeel Kishorbhai",
+        "Gojiya Jagdish Bhikhabhai",
+        "Gohel Pallavi Dipeshbhai",
+        "Bhadja Aumkumar Ajaykumar",
+        "Mishwa Shitalbhai Vadaliya",
+        "Bhogayata Hemang Rameshbhai",
+        "Panchotiya Om Bharatbhai",
+        "Gandhi Priyansh",
+        "Pathar Mayank Jagdishbhai",
+        "Chauhan Viren Kamleshbhai",
+        "Vaghela Khushi Kantibhai",
+        "Shirvi Khushi Sanjaybhaid",
+        "Bambhroliya Omkumar Mansukhbhaid",
+        "Kadivar Alwaz Nijamudind",
+        "Gami Rudra Kantilald",
+        "Amreliya Prince Ashvinbhaid",
+        "Dev Bimal Gandhad",
+        "Patel Preet Chetankumard",
+        "Limbasiya Janki Sunilbhaid",
+        "Hirani Vasu Dipakbhaid",
+        "Viroja Hit Pankajbhaid",
+        "Jivani Rajalkumar Bharatbhaid",
+        "Shah Dhyani Brijeshbhaid",
+        "Parmar Jayraj Dharmendrabhaid",
+        "Mungara Harsh Nileshbhaid",
+        "Sangani Rensee Kishorbhaid",
+        "Budhdhdev Shreyas Pareshbhaid",
+        "Kachrola Dharm Maheshbhaid",
+        "Parasara Mohmmadnakib Najarhushend",
+        "Dahisariya Dhairya Bhupendrabhaid",
+        "Kanzariya Tirth Gopalbhaid",
+        "Pingalsur Aryan Pravinbhaid",
+        "Hadavani Dhwaneet Harishbhaid",
+        "Bhut Dhyey Ketanbhaid",
+        "Kotak Rudra Kaushikbhaid",
+        "Marakana Krish Arvindbhaid",
+        "Busa Yug Anilbhaid",
+        "Khunt Darsh Nileshbhaid",
+        "Panchotiya Palak Kirtibhaid",
+        "Ramani Sandhyaben Jagjivanbhaid",
+        "Patel Anuj Prakashbhaid",
+        "Tank Drashti Jigneshbhaid",
+        "Patel Tapan Vishalkumard",
+        "Parmar Kirtan Hiteshbhaid",
+        "Limbasia Prince Bhagvanjibhaid",
+        "Vaghasiya Krish Vipulbhaid",
+        "Jivani Prince Ambaramd",
+        "Saradava Parth Vinodbhai",
+        "Zalavadiya Princy Bhaveshbhai",
+        "Chikhaliya Dhruvin Rohitbhai",
+        "Vora Himani Rajivbhai",
+        "Sumra Nadeem Amajadbhai",
+        "Hargovind Detroja",
+        "Ahuja Nancy Kailashbhai",
+        "Gajjar Divy Alpeshkumar",
+        "Gundecha Dhruvi Anilbhai",
+        "Vyas Madhav Amitbhai",
+        "Undhad Drashti Ghanshyambhai",
+        "Agravat Ayushiben Rameshbhai",
+        "Hingrajiya Krupali Dineshbhai",
+        "Kapuriya Priyansh Rohitbhai",
+        "Dosani Aryan Hanifmahmad",
+        "Busa Jenish Bhaveshbhai",
+        "Ughareja Om Rajeshbhai",
+        "Vekariya Drashti Jayeshbhai",
+        "Vaghela Meetkumar Jayesh",
+        "Kadivar Mohamadsaiful Ismailbhai",
+        "Kanpariya Nidhi Dilipbhai",
+        "Gondaliya Dhruvisa Devjibhai",
+        "Dholariya Palak Lalitbhai",
+        "Parmar Priyaba Abhijitsinh",
+      ];
+
+      //=============== Display Students =================//
+
+      let temp = "";
+
+      for (let i = 0; i < students.length; i++) {
+        temp += `
+  
+          <tr>
+      
+          <td>
+      
+          <input
+          type="checkbox"
+          class="attendance"
+          onchange="updateList()">
+      
+          </td>
+      
+          <td>${i + 101}</td>
+      
+          <td class="text-start">${students[i]}</td>
+      
+          </tr>
+      
+          `;
+      }
+      document.getElementById("studentTable").innerHTML = temp;
+
+      let mode = "present";
+
+      document.getElementById("listTitle").innerHTML = "Present Roll Numbers";
+      document.getElementById("absentList").value = "";
+
+      //================ Check All =================//
+
+      function checkAll() {
+        mode = "absent";
+
+        var boxes = document.querySelectorAll(".attendance");
+
+        for (var i = 0; i < boxes.length; i++) {
+          boxes[i].checked = true;
+        }
+
+        document.getElementById("listTitle").innerHTML = "Absent Roll Numbers";
+
+        updateList();
+      }
+
+      //================ Uncheck All =================//
+
+      function uncheckAll() {
+        mode = "present";
+
+        var boxes = document.querySelectorAll(".attendance");
+
+        for (var i = 0; i < boxes.length; i++) {
+          boxes[i].checked = false;
+        }
+
+        document.getElementById("listTitle").innerHTML = "Present Roll Numbers";
+
+        updateList();
+      }
+
+      //================ Update Absent List =================//
+
+      function updateList() {
+        let list = [];
+
+        var boxes = document.querySelectorAll(".attendance");
+
+        for (var i = 0; i < boxes.length; i++) {
+          if (mode == "present") {
+            if (boxes[i].checked) {
+              list.push(i + 101);
+            }
+          } else {
+            if (!boxes[i].checked) {
+              list.push(i + 101);
+            }
+          }
+        }
+
+        document.getElementById("absentList").value = list.join(" ");
+      }
+
+      //================ Submit =================//
+
+      function submitAttendance() {
+        let present = 0;
+        let absent = 0;
+
+        var boxes = document.querySelectorAll(".attendance");
+
+        for (var i = 0; i < boxes.length; i++) {
+          if (boxes[i].checked) present++;
+          else absent++;
+        }
+
+        alert(
+          "Attendance Submitted\n\n" +
+            "Total Students : " +
+            students.length +
+            "\nPresent : " +
+            present +
+            "\nAbsent : " +
+            absent,
+        );
+
+        resetAttendance();
+      }
+
+      //================ Reset =================//
+
+      function resetAttendance() {
+        // Sare checkbox unchecked
+        var boxes = document.querySelectorAll(".attendance");
+
+        for (var i = 0; i < boxes.length; i++) {
+          boxes[i].checked = false;
+        }
+
+        // Present mode on
+        mode = "present";
+
+        // Heading change kare ke liye
+        document.getElementById("listTitle").innerHTML = "Present Roll Numbers";
+
+        // Textarea clear
+        document.getElementById("absentList").value = "";
+      }
+
+      //============ Apply Roll Number =================//
+
+      function applyRollNumbers() {
+        // Space ya comma dono support karega
+        let input = document.getElementById("absentList").value;
+
+        var arr = input.split(/[\s,]+/);
+        var numbers = [];
+
+        for (var i = 0; i < arr.length; i++) {
+          var n = parseInt(arr[i]);
+
+          if (!isNaN(n)) {
+            numbers.push(n);
+          }
+        }
+
+        // Sab pehle check
+        var boxes = document.querySelectorAll(".attendance");
+
+        for (var i = 0; i < boxes.length; i++) {
+          boxes[i].checked = false;
+        }
+
+        if (mode == "present") {
+          // Present mode me likhe hue roll numbers CHECK honge
+          for (var i = 0; i < numbers.length; i++) {
+            var num = numbers[i];
+
+            if (num >= 101 && num <= students.length + 100) {
+              boxes[num - 101].checked = true;
+            } else {
+              alert("Please Check Roll number ! It's outoff range.");
+            }
+          }
+        } else {
+          // Absent mode me sab CHECK
+          for (var i = 0; i < boxes.length; i++) {
+            boxes[i].checked = true;
+          }
+          // Jo numbers likhe hain unko UNCHECK
+          for (var i = 0; i < numbers.length; i++) {
+            var num = numbers[i];
+
+            if (num >= 101 && num <= students.length + 100) {
+              boxes[num - 101].checked = false;
+            } else {
+              alert("Please Check Roll number ! It's outoff range.");
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
