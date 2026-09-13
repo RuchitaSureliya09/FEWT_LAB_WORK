@@ -1,0 +1,66 @@
+body {
+  background: #f2f2f2;
+}
+
+.card {
+  border-radius: 15px;
+}
+
+.table-container {
+  height: 500px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+#absentList {
+  height: 80px;
+  resize: none;
+  font-weight: bold;
+  overflow-y: auto;
+}
+
+.btn {
+  min-width: 140px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .input-box,
+  .actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input-box input,
+  button {
+    width: 100%;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    padding: 10px;
+  }
+}
