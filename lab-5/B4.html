@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B4</title>
+  </head>
+  <body>
+    <script>
+      // 4. WAP to read an array form the user and sort them using quick sort. (B)
+
+      let n = parseInt(prompt("Enter size of array : "));
+      let arr = [],
+        low,
+        high;
+
+      function quicksort(a, low, high) {
+        let p;
+
+        if (low < high) {
+          p = part(a, low, high);
+
+          quicksort(a, low, p - 1);
+          quicksort(a, p + 1, high);
+        }
+      }
+
+      function part(a, low, high) {
+        let pivot, i, temp;
+
+        pivot = a[high];
+        i = low - 1;
+
+        for (let j = low; j < high; j++) {
+          if (a[j] < pivot) {
+            i++;
+
+            temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+          }
+        }
+
+        temp = a[i + 1];
+        a[i + 1] = a[high];
+        a[high] = temp;
+
+        return i + 1;
+      }
+
+      for (let index = 0; index < n; index++) {
+        arr[index] = parseInt(prompt("Enter element " + index));
+      }
+
+      quicksort(arr, 0, n - 1);
+
+      console.log("Array : " + arr.join(" , "));
+    </script>
+  </body>
+</html>
