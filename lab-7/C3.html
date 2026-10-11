@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C3</title>
+
+    <style>
+      button {
+        height: 80px;
+        width: 80px;
+        border-radius: 15px;
+        background-color: rgb(94, 93, 93);
+        color: white;
+        font-size: xx-large;
+        border: black 3px solid;
+        font-weight: bold;
+      }
+      #mytxt {
+        width: 440px;
+        height: 90px;
+        margin-bottom: 10px;
+        font-size: 1cm;
+        font-weight: bold;
+        border-radius: 10px;
+        text-align: right;
+        border: black 4px solid;
+      }
+      table {
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+      #d {
+        background-color: rgb(193, 86, 86);
+      }
+      #e {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 3. WAP to create a scientiƒic graphical calculator using HTML and JavaScript. (C) -->
+
+    <table align="center">
+      <tr>
+        <td colspan="5">
+          <input type="text" id="mytxt" readonly />
+        </td>
+      </tr>
+
+      <tr>
+        <td><button onclick="clearall()" id="e">AC</button></td>
+        <td><button onclick="dlt()" id="e">⌫</button></td>
+        <td><button onclick="display('(')" id="d">(</button></td>
+        <td><button onclick="display(')')" id="d">)</button></td>
+        <td><button onclick="scientific('pi')" id="d">π</button></td>
+      </tr>
+
+      <tr>
+        <td><button onclick="scientific('sin')" id="d">sin</button></td>
+        <td><button onclick="scientific('cos')" id="d">cos</button></td>
+        <td><button onclick="scientific('tan')" id="d">tan</button></td>
+        <td><button onclick="scientific('log')" id="d">log</button></td>
+        <td><button onclick="scientific('ln')" id="d">ln</button></td>
+      </tr>
+
+      <tr>
+        <td><button onclick="scientific('sqrt')" id="d">√</button></td>
+        <td><button onclick="scientific('square')" id="d">x²</button></td>
+        <td><button onclick="scientific('cube')" id="d">x³</button></td>
+        <td><button onclick="scientific('reciprocal')" id="d">1/x</button></td>
+        <td><button onclick="scientific('factorial')" id="d">n!</button></td>
+      </tr>
+
+      <tr>
+        <td><button onclick="display('7')">7</button></td>
+        <td><button onclick="display('8')">8</button></td>
+        <td><button onclick="display('9')">9</button></td>
+        <td><button onclick="display('+')" id="d">+</button></td>
+        <td><button onclick="scientific('e')" id="d">e</button></td>
+      </tr>
+
+      <tr>
+        <td><button onclick="display('4')">4</button></td>
+        <td><button onclick="display('5')">5</button></td>
+        <td><button onclick="display('6')">6</button></td>
+        <td><button onclick="display('-')" id="d">-</button></td>
+        <td><button onclick="display('/')" id="d">/</button></td>
+      </tr>
+
+      <tr>
+        <td><button onclick="display('1')">1</button></td>
+        <td><button onclick="display('2')">2</button></td>
+        <td><button onclick="display('3')">3</button></td>
+        <td><button onclick="display('*')" id="d">*</button></td>
+        <td><button onclick="display('**')" id="d">^</button></td>
+      </tr>
+
+      <tr>
+        <td><button onclick="display('00')">00</button></td>
+        <td><button onclick="display('0')">0</button></td>
+        <td><button onclick="display('.')">.</button></td>
+        <td><button onclick="display('%')" id="d">%</button></td>
+        <td><button onclick="result()" id="e">=</button></td>
+      </tr>
+    </table>
+    <script>
+      function display(num) {
+        document.getElementById("mytxt").value += num;
+      }
+
+      function clearall() {
+        document.getElementById("mytxt").value = "";
+      }
+
+      function dlt() {
+        let exp = document.getElementById("mytxt").value;
+        document.getElementById("mytxt").value = exp.slice(0, -1);
+      }
+
+      function result() {
+        let exp = document.getElementById("mytxt").value;
+
+        exp = exp.replace(/sin\(/g, "Math.sin(Math.PI/180*");
+        exp = exp.replace(/cos\(/g, "Math.cos(Math.PI/180*");
+        exp = exp.replace(/tan\(/g, "Math.tan(Math.PI/180*");
+        exp = exp.replace(/log\(/g, "Math.log10(");
+        exp = exp.replace(/ln\(/g, "Math.log(");
+        exp = exp.replace(/sqrt\(/g, "Math.sqrt(");
+        exp = exp.replace(/pi/g, "Math.PI");
+        exp = exp.replace(/e/g, "Math.E");
+
+        exp = exp.replace(/(\d+)!/g, function (match, n) {
+          let ans = 1;
+
+          for (let i = 1; i <= Number(n); i++) {
+            ans *= i;
+          }
+
+          return ans;
+        });
+
+        let ans = eval(exp);
+
+        if (isNaN(ans) || !isFinite(ans)) {
+          document.getElementById("mytxt").value = "Error";
+        } else {
+          document.getElementById("mytxt").value = ans;
+        }
+      }
+
+      function scientific(type) {
+        let txt = document.getElementById("mytxt");
+
+        switch (type) {
+          case "sin":
+            txt.value += "sin(";
+            break;
+
+          case "cos":
+            txt.value += "cos(";
+            break;
+
+          case "tan":
+            txt.value += "tan(";
+            break;
+
+          case "log":
+            txt.value += "log(";
+            break;
+
+          case "ln":
+            txt.value += "ln(";
+            break;
+
+          case "sqrt":
+            txt.value += "sqrt(";
+            break;
+
+          case "square":
+            txt.value += "**2";
+            break;
+
+          case "cube":
+            txt.value += "**3";
+            break;
+
+          case "reciprocal":
+            txt.value = "1/(" + txt.value + ")";
+            break;
+
+          case "pi":
+            txt.value += "pi";
+            break;
+
+          case "e":
+            txt.value += "e";
+            break;
+
+          case "factorial":
+            txt.value += "!";
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
