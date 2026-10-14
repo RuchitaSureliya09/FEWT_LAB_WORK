@@ -74,7 +74,7 @@
         </div>
 
         <div class="col-md-5">
-          <input type="file" id="image" class="form-control" />
+          <input type="text" id="image" class="form-control" />
         </div>
       </div>
 
@@ -117,7 +117,7 @@
 
         for (var i = 0; i < students.length; i++) {
           rows += "<tr>";
-          rows += "<td><img src='" + students[i].image + "' width='60'></td>";
+          rows += "<td>" + students[i].image + "</td>";
           rows += "<td>" + students[i].fname + "</td>";
           rows += "<td>" + students[i].lname + "</td>";
           rows += "<td>" + students[i].age + "</td>";
@@ -148,7 +148,7 @@
         $("#image").val("");
       }
 
-      $("#addBtn").click(function () {
+      $("#addBtn").click(() => {
         var fname = $("#fname").val();
         var lname = $("#lname").val();
         var age = $("#age").val();
@@ -187,12 +187,13 @@
         $("#age").val(students[index].age);
         $("#semester").val(students[index].semester);
         $("#rollno").val(students[index].rollno);
+        $("#image").val(students[index].image);
 
         editIndex = index;
         console.log(editIndex);
       }
 
-      $("#updateBtn").click(function () {
+      $("#updateBtn").click(() => {
         if (editIndex == -1) {
           alert("Select a student first");
           return;
